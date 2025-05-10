@@ -28,65 +28,25 @@
         body {
             font-family: 'Roboto Mono', monospace;
             background: var(--background-dark);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: auto;
+            padding: 0;
+            overflow-x: hidden;
         }
 
         .cta-container {
             position: relative;
             width: 100%;
             height: 200px;
-            max-width: 900px;
             padding: 20px;
             background: linear-gradient(135deg, rgba(10, 14, 26, 0.95), rgba(20, 25, 40, 0.9));
-            border-radius: 15px;
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.2);
             overflow: hidden;
             z-index: 2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .cta-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 60px rgba(0, 255, 136, 0.5);
-        }
-
-        .binary-matrix {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .binary-stream {
-            position: absolute;
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            opacity: 0.2;
-            white-space: nowrap;
-            animation: matrix-fall linear infinite;
-            user-select: none;
-        }
-
-        @keyframes matrix-fall {
-            0% {
-                transform: translateY(-100%);
-            }
-
-            100% {
-                transform: translateY(200px);
-            }
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
         }
 
         .tech-grid {
@@ -109,7 +69,7 @@
             z-index: 0;
         }
 
-        .floating-icons {
+        .binary-matrix {
             position: absolute;
             top: 0;
             left: 0;
@@ -117,94 +77,106 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
+            overflow: hidden;
         }
 
-        .floating-icon {
+        .binary-stream {
             position: absolute;
-            color: var(--accent-glow);
-            font-size: 1rem;
-            opacity: 0;
-            filter: drop-shadow(0 0 8px var(--accent-glow));
-            animation: float-icon 15s infinite ease-in-out;
+            color: var(--primary-color);
+            font-size: 0.7rem;
+            opacity: 0.3;
+            white-space: nowrap;
+            animation: matrix-fall linear infinite;
+            user-select: none;
         }
 
-        @keyframes float-icon {
+        @keyframes matrix-fall {
             0% {
-                transform: translate(0, 0) scale(0.7);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.4;
-            }
-
-            90% {
-                opacity: 0.4;
+                transform: translateY(-100%);
             }
 
             100% {
-                transform: translate(calc(50vw - 50px), calc(-100px + 50px)) scale(1);
-                opacity: 0;
+                transform: translateY(200px);
+            }
+        }
+
+        .circuit-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: var(--circuit-blue);
+            animation: circuit-flow 3s infinite ease-in-out;
+        }
+
+        @keyframes circuit-flow {
+
+            0%,
+            100% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.4;
             }
         }
 
         .heading {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
-            font-weight: 900;
+            font-weight: 700;
             color: var(--text-light);
+            text-align: center;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-            animation: glow-text 2s ease-in-out infinite;
-        }
-
-        @keyframes glow-text {
-
-            0%,
-            100% {
-                text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
-            }
-
-            50% {
-                text-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
-            }
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            z-index: 3;
         }
 
         .description {
             color: var(--text-light);
             font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 20px;
             line-height: 1.4;
-            opacity: 0.85;
-        }
-
-        .cta-content {
-            flex: 1;
-            padding-right: 20px;
+            opacity: 0.9;
+            z-index: 3;
+            max-width: 80%;
         }
 
         .cta-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            z-index: 3;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             padding: 8px 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            background: transparent;
+            border: 1px solid var(--primary-color);
+            border-radius: 30px;
+            background: rgba(0, 255, 136, 0.1);
             color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            z-index: 4;
         }
 
         .btn:hover {
@@ -231,11 +203,14 @@
 
         .btn-icon {
             margin-right: 8px;
-            font-size: 1rem;
-            animation: pulse-icon 2s infinite;
+            font-size: 0.9rem;
         }
 
-        @keyframes pulse-icon {
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
 
             0%,
             100% {
@@ -243,62 +218,87 @@
             }
 
             50% {
-                transform: scale(1.15);
+                transform: scale(1.1);
             }
         }
 
-        .circuit-overlay {
+        .scanline {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.15;
+            height: 10px;
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(0, 255, 136, 0.2),
+                    transparent);
+            animation: scan 4s linear infinite;
+            z-index: 2;
+            opacity: 0.5;
         }
 
-        .circuit-line {
-            position: absolute;
-            background: var(--circuit-blue);
-            animation: circuit-flow 2.5s infinite ease-in-out;
-        }
+        @keyframes scan {
+            0% {
+                top: -10px;
+            }
 
-        @keyframes circuit-flow {
-
-            0%,
             100% {
-                opacity: 0.15;
+                top: 200px;
             }
+        }
 
-            50% {
-                opacity: 0.35;
-            }
+        .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 2;
+        }
+
+        .corner-tl {
+            top: 10px;
+            left: 10px;
+            border-top: 2px solid var(--primary-color);
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .corner-tr {
+            top: 10px;
+            right: 10px;
+            border-top: 2px solid var(--primary-color);
+            border-right: 2px solid var(--primary-color);
+        }
+
+        .corner-bl {
+            bottom: 10px;
+            left: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .corner-br {
+            bottom: 10px;
+            right: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            border-right: 2px solid var(--primary-color);
         }
 
         @media (max-width: 768px) {
-            .cta-container {
-                flex-direction: column;
-                height: auto;
-                padding: 15px;
-                text-align: center;
-            }
-
-            .cta-content {
-                padding-right: 0;
-                margin-bottom: 15px;
-            }
-
             .heading {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .description {
                 font-size: 0.8rem;
+                max-width: 90%;
+            }
+
+            .cta-buttons {
+                gap: 10px;
             }
 
             .btn {
-                width: 100%;
-                justify-content: center;
+                padding: 6px 15px;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -306,33 +306,29 @@
 
 <body>
     <div class="cta-container">
+        <div class="scanline"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
         <div class="tech-grid"></div>
         <div class="binary-matrix" id="binary-matrix"></div>
         <div class="circuit-overlay">
             <div class="circuit-line" style="width: 2px; height: 80px; top: 10%; left: 15%;"></div>
-            <div class="circuit-line" style="width: 120px; height: 2px; top: 25%; left: 60%;"></div>
-            <div class="circuit-line" style="width: 2px; height: 60px; top: 65%; left: 40%;"></div>
-            <div class="circuit-line" style="width: 100px; height: 2px; top: 45%; left: 10%;"></div>
-        </div>
-        <div class="floating-icons" id="floating-icons">
-            <i class="floating-icon fas fa-code" style="top: 10%; left: 5%; animation-delay: 0s;"></i>
-            <i class="floating-icon fas fa-laptop-code" style="top: 20%; left: 90%; animation-delay: 1s;"></i>
-            <i class="floating-icon fas fa-server" style="top: 80%; left: 10%; animation-delay: 2s;"></i>
-            <i class="floating-icon fas fa-database" style="top: 15%; left: 75%; animation-delay: 3s;"></i>
-            <i class="floating-icon fas fa-microchip" style="top: 85%; left: 80%; animation-delay: 4s;"></i>
+            <div class="circuit-line" style="width: 120px; height: 2px; top: 30%; left: 65%;"></div>
+            <div class="circuit-line" style="width: 2px; height: 60px; top: 70%; left: 35%;"></div>
+            <div class="circuit-line" style="width: 100px; height: 2px; top: 50%; left: 5%;"></div>
         </div>
 
-        <div class="cta-content">
-            <h1 class="heading">Premium Programming Solutions</h1>
-            <p class="description">We build cutting-edge digital experiences with innovative technologies</p>
-        </div>
+        <h1 class="heading">Premium Programming Solutions</h1>
+        <p class="description">Building the future with cutting-edge code and innovative technologies</p>
         <div class="cta-buttons">
             <a href="tel:+998997799333" class="btn">
-                <span class="btn-icon"><i class="fa-solid fa-phone"></i></span>
+                <span class="btn-icon pulse"><i class="fa-solid fa-phone"></i></span>
                 Call Us
             </a>
             <a href="https://t.me/iqbolshoh_777" class="btn">
-                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                <span class="btn-icon pulse"><i class="fas fa-paper-plane"></i></span>
                 Free Consultation
             </a>
         </div>
@@ -347,7 +343,8 @@
                 const stream = document.createElement('div');
                 stream.className = 'binary-stream';
                 stream.style.left = `${Math.random() * 100}%`;
-                stream.style.animationDuration = `${Math.random() * 4 + 4}s`;
+                stream.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                stream.style.animationDelay = `${Math.random() * 2}s`;
                 stream.textContent = Array.from({ length: 15 }, () => Math.random() > 0.5 ? '1' : '0').join('');
                 matrixContainer.appendChild(stream);
 
@@ -358,25 +355,19 @@
             }
 
             for (let i = 0; i < numStreams; i++) {
-                setTimeout(createBinaryStream, Math.random() * 4000);
+                setTimeout(createBinaryStream, Math.random() * 3000);
             }
 
-            const cta = document.querySelector('.cta-container');
-            cta.addEventListener('mousemove', (e) => {
-                const rect = cta.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                cta.style.transform = `perspective(800px) rotateX(${y * 3}deg) rotateY(${x * 3}deg) translateY(-5px)`;
-            });
-
-            cta.addEventListener('mouseleave', () => {
-                cta.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(-5px)';
-            });
-
-            const icons = document.querySelectorAll('.floating-icon');
-            icons.forEach(icon => {
-                icon.style.animationDelay = `${Math.random() * 15}s`;
-                icon.style.animationDuration = `${Math.random() * 8 + 12}s`;
+            // Add interactive glow effect
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mousemove', (e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    button.style.setProperty('--x', `${x}px`);
+                    button.style.setProperty('--y', `${y}px`);
+                });
             });
         });
     </script>
