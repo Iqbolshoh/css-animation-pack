@@ -33,24 +33,29 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
+            overflow: auto;
         }
 
         .cta-container {
             position: relative;
             width: 100%;
+            height: 200px;
             max-width: 900px;
-            padding: 50px;
+            padding: 20px;
             background: linear-gradient(135deg, rgba(10, 14, 26, 0.95), rgba(20, 25, 40, 0.9));
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
             overflow: hidden;
             z-index: 2;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .cta-container:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 0 60px rgba(0, 255, 136, 0.5);
         }
 
         .binary-matrix {
@@ -67,8 +72,8 @@
         .binary-stream {
             position: absolute;
             color: var(--primary-color);
-            font-size: 0.9rem;
-            opacity: 0.3;
+            font-size: 0.8rem;
+            opacity: 0.2;
             white-space: nowrap;
             animation: matrix-fall linear infinite;
             user-select: none;
@@ -80,7 +85,7 @@
             }
 
             100% {
-                transform: translateY(100vh);
+                transform: translateY(200px);
             }
         }
 
@@ -94,12 +99,12 @@
                     rgba(255, 255, 255, 0.05) 0px,
                     rgba(255, 255, 255, 0.05) 1px,
                     transparent 1px,
-                    transparent 50px),
+                    transparent 30px),
                 repeating-linear-gradient(90deg,
                     rgba(255, 255, 255, 0.05) 0px,
                     rgba(255, 255, 255, 0.05) 1px,
                     transparent 1px,
-                    transparent 50px);
+                    transparent 30px);
             opacity: 0.1;
             z-index: 0;
         }
@@ -117,44 +122,42 @@
         .floating-icon {
             position: absolute;
             color: var(--accent-glow);
-            font-size: 1.5rem;
+            font-size: 1rem;
             opacity: 0;
-            filter: drop-shadow(0 0 10px var(--accent-glow));
-            animation: float-icon 20s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+            animation: float-icon 15s infinite ease-in-out;
         }
 
         @keyframes float-icon {
             0% {
-                transform: translate(0, 0) scale(0.8);
+                transform: translate(0, 0) scale(0.7);
                 opacity: 0;
             }
 
             10% {
-                opacity: 0.5;
+                opacity: 0.4;
             }
 
             90% {
-                opacity: 0.5;
+                opacity: 0.4;
             }
 
             100% {
-                transform: translate(calc(50vw - 100px), calc(-50vh + 100px)) scale(1.2);
+                transform: translate(calc(50vw - 50px), calc(-100px + 50px)) scale(1);
                 opacity: 0;
             }
         }
 
         .heading {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--text-light);
-            text-align: center;
-            margin-bottom: 20px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
             animation: glow-text 2s ease-in-out infinite;
         }
 
@@ -162,39 +165,41 @@
 
             0%,
             100% {
-                text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+                text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
             }
 
             50% {
-                text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+                text-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
             }
         }
 
         .description {
             color: var(--text-light);
-            font-size: 1.2rem;
-            text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            opacity: 0.85;
+        }
+
+        .cta-content {
+            flex: 1;
+            padding-right: 20px;
         }
 
         .cta-buttons {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 15px 30px;
+            padding: 8px 20px;
             border: 2px solid var(--primary-color);
-            border-radius: 50px;
+            border-radius: 25px;
             background: transparent;
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -205,8 +210,8 @@
         .btn:hover {
             background: var(--primary-color);
             color: var(--background-dark);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+            transform: translateY(-2px);
         }
 
         .btn::before {
@@ -225,8 +230,8 @@
         }
 
         .btn-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 8px;
+            font-size: 1rem;
             animation: pulse-icon 2s infinite;
         }
 
@@ -238,7 +243,7 @@
             }
 
             50% {
-                transform: scale(1.2);
+                transform: scale(1.15);
             }
         }
 
@@ -249,43 +254,46 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.1;
+            opacity: 0.15;
         }
 
         .circuit-line {
             position: absolute;
             background: var(--circuit-blue);
-            animation: circuit-flow 3s infinite ease-in-out;
+            animation: circuit-flow 2.5s infinite ease-in-out;
         }
 
         @keyframes circuit-flow {
 
             0%,
             100% {
-                opacity: 0.1;
+                opacity: 0.15;
             }
 
             50% {
-                opacity: 0.4;
+                opacity: 0.35;
             }
         }
 
         @media (max-width: 768px) {
             .cta-container {
-                padding: 30px 20px;
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .cta-content {
+                padding-right: 0;
+                margin-bottom: 15px;
             }
 
             .heading {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .description {
-                font-size: 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
+                font-size: 0.8rem;
             }
 
             .btn {
@@ -301,10 +309,10 @@
         <div class="tech-grid"></div>
         <div class="binary-matrix" id="binary-matrix"></div>
         <div class="circuit-overlay">
-            <div class="circuit-line" style="width: 2px; height: 150px; top: 10%; left: 20%;"></div>
-            <div class="circuit-line" style="width: 200px; height: 2px; top: 30%; left: 60%;"></div>
-            <div class="circuit-line" style="width: 2px; height: 100px; top: 70%; left: 40%;"></div>
-            <div class="circuit-line" style="width: 150px; height: 2px; top: 50%; left: 10%; Blondie"></div>
+            <div class="circuit-line" style="width: 2px; height: 80px; top: 10%; left: 15%;"></div>
+            <div class="circuit-line" style="width: 120px; height: 2px; top: 25%; left: 60%;"></div>
+            <div class="circuit-line" style="width: 2px; height: 60px; top: 65%; left: 40%;"></div>
+            <div class="circuit-line" style="width: 100px; height: 2px; top: 45%; left: 10%;"></div>
         </div>
         <div class="floating-icons" id="floating-icons">
             <i class="floating-icon fas fa-code" style="top: 10%; left: 5%; animation-delay: 0s;"></i>
@@ -312,40 +320,16 @@
             <i class="floating-icon fas fa-server" style="top: 80%; left: 10%; animation-delay: 2s;"></i>
             <i class="floating-icon fas fa-database" style="top: 15%; left: 75%; animation-delay: 3s;"></i>
             <i class="floating-icon fas fa-microchip" style="top: 85%; left: 80%; animation-delay: 4s;"></i>
-            <i class="floating-icon fas fa-mobile-alt" style="top: 65%; left: 15%; animation-delay: 5s;"></i>
-            <i class="floating-icon fas fa-globe" style="top: 35%; left: 85%; animation-delay: 6s;"></i>
-            <i class="floating-icon fas fa-cloud" style="top: 75%; left: 25%; animation-delay: 7s;"></i>
-            <i class="floating-icon fas fa-robot" style="top: 25%; left: 20%; animation-delay: 8s;"></i>
-            <i class="floating-icon fas fa-network-wired" style="top: 55%; left: 80%; animation-delay: 9s;"></i>
-            <i class="floating-icon fas fa-shield-alt" style="top: 45%; left: 10%; animation-delay: 10s;"></i>
-            <i class="floating-icon fas fa-bolt" style="top: 30%; left: 60%; animation-delay: 11s;"></i>
-            <i class="floating-icon fas fa-cogs" style="top: 70%; left: 70%; animation-delay: 12s;"></i>
-            <i class="floating-icon fas fa-chart-line" style="top: 50%; left: 40%; animation-delay: 13s;"></i>
-            <i class="floating-icon fas fa-qrcode" style="top: 90%; left: 50%; animation-delay: 14s;"></i>
-            <i class="floating-icon fas fa-brain" style="top: 20%; left: 30%; animation-delay: 15s;"></i>
-            <i class="floating-icon fas fa-cube" style="top: 60%; left: 20%; animation-delay: 16s;"></i>
-            <i class="floating-icon fas fa-rocket" style="top: 40%; left: 80%; animation-delay: 17s;"></i>
-            <i class="floating-icon fas fa-wifi" style="top: 70%; left: 30%; animation-delay: 18s;"></i>
-            <i class="floating-icon fas fa-satellite" style="top: 15%; left: 50%; animation-delay: 19s;"></i>
-            <i class="floating-icon fas fa-lock" style="top: 80%; left: 60%; animation-delay: 20s;"></i>
-            <i class="floating-icon fas fa-key" style="top: 25%; left: 70%; animation-delay: 21s;"></i>
-            <i class="floating-icon fas fa-fingerprint" style="top: 50%; left: 15%; animation-delay: 22s;"></i>
-            <i class="floating-icon fas fa-cloud-upload-alt" style="top: 35%; left: 40%; animation-delay: 23s;"></i>
-            <i class="floating-icon fas fa-code-branch" style="top: 65%; left: 50%; animation-delay: 24s;"></i>
-            <i class="floating-icon fas fa-bug" style="top: 20%; left: 60%; animation-delay: 25s;"></i>
-            <i class="floating-icon fas fa-terminal" style="top: 45%; left: 25%; animation-delay: 26s;"></i>
-            <i class="floating-icon fas fa-folder-open" style="top: 75%; left: 15%; animation-delay: 27s;"></i>
-            <i class="floating-icon fas fa-window-restore" style="top: 30%; left: 35%; animation-delay: 28s;"></i>
-            <i class="floating-icon fas fa-tachometer-alt" style="top: 55%; left: 65%; animation-delay: 29s;"></i>
-            <i class="floating-icon fas fa-hdd" style="top: 40%; left: 45%; animation-delay: 30s;"></i>
         </div>
 
-        <h1 class="heading">Premium Programming Solutions</h1>
-        <p class="description">We build cutting-edge digital experiences with innovative technologies</p>
+        <div class="cta-content">
+            <h1 class="heading">Premium Programming Solutions</h1>
+            <p class="description">We build cutting-edge digital experiences with innovative technologies</p>
+        </div>
         <div class="cta-buttons">
             <a href="tel:+998997799333" class="btn">
                 <span class="btn-icon"><i class="fa-solid fa-phone"></i></span>
-                Call Us: +998 (99) 779-93-33
+                Call Us
             </a>
             <a href="https://t.me/iqbolshoh_777" class="btn">
                 <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
@@ -357,14 +341,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const matrixContainer = document.getElementById('binary-matrix');
-            const numStreams = 30;
+            const numStreams = 20;
 
             function createBinaryStream() {
                 const stream = document.createElement('div');
                 stream.className = 'binary-stream';
                 stream.style.left = `${Math.random() * 100}%`;
-                stream.style.animationDuration = `${Math.random() * 5 + 5}s`;
-                stream.textContent = Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('');
+                stream.style.animationDuration = `${Math.random() * 4 + 4}s`;
+                stream.textContent = Array.from({ length: 15 }, () => Math.random() > 0.5 ? '1' : '0').join('');
                 matrixContainer.appendChild(stream);
 
                 stream.addEventListener('animationend', () => {
@@ -374,7 +358,7 @@
             }
 
             for (let i = 0; i < numStreams; i++) {
-                setTimeout(createBinaryStream, Math.random() * 5000);
+                setTimeout(createBinaryStream, Math.random() * 4000);
             }
 
             const cta = document.querySelector('.cta-container');
@@ -382,17 +366,17 @@
                 const rect = cta.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                cta.style.transform = `perspective(1000px) rotateX(${y * 5}deg) rotateY(${x * 5}deg) translateY(-10px)`;
+                cta.style.transform = `perspective(800px) rotateX(${y * 3}deg) rotateY(${x * 3}deg) translateY(-5px)`;
             });
 
             cta.addEventListener('mouseleave', () => {
-                cta.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
+                cta.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(-5px)';
             });
 
             const icons = document.querySelectorAll('.floating-icon');
             icons.forEach(icon => {
-                icon.style.animationDelay = `${Math.random() * 20}s`;
-                icon.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                icon.style.animationDelay = `${Math.random() * 15}s`;
+                icon.style.animationDuration = `${Math.random() * 8 + 12}s`;
             });
         });
     </script>
